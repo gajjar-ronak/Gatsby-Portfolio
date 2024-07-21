@@ -1,13 +1,27 @@
 import React from "react"
-import { Form, Input, Button, Row, Col } from "antd"
+import { Form, Input, Button, Row, Col, notification } from "antd"
 import GoogleMapComponent from "./GoogleMap"
 
-const ContactForm = () => {
-  const antdMessage = Form.useFormInstance()
+import { CheckCircleFilled } from "@ant-design/icons"
 
+const openNotification = () => {
+  notification.open({
+    message: "Thank you for reaching out!",
+    description: "I'll get back to you as soon as possible.",
+    placement: "topRight",
+    duration: 5,
+    icon: <CheckCircleFilled style={{ color: "green" }} />,
+  })
+}
+
+const ContactForm = () => {
   const [form] = Form.useForm()
 
   const onFinish = async values => {
+    try {
+    } catch (error) {
+      console.error(error)
+    }
     try {
       const response = await fetch("/.netlify/functions/contact", {
         method: "POST",
@@ -18,15 +32,13 @@ const ContactForm = () => {
       })
 
       if (response.ok) {
-        antdMessage.success("Form submitted successfully!")
         form.resetFields()
+        openNotification()
       } else {
-        antdMessage.error("Failed to submit form. Please try again.")
+        throw new Error("Failed to submit form. Please try again.")
       }
     } catch (error) {
-      antdMessage.error(
-        "An error occurred while submitting the form. Please try again."
-      )
+      console.error(error)
     }
   }
 

@@ -1,4 +1,5 @@
 const { MongoClient } = require("mongodb")
+require("dotenv").config() // Load environment variables
 
 let cachedClient = null
 let cachedDb = null
@@ -8,7 +9,10 @@ async function connectToDatabase(uri) {
     return { client: cachedClient, db: cachedDb }
   }
 
-  const client = new MongoClient(uri)
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   await client.connect()
 
   const db = client.db("portfolio")
@@ -19,7 +23,7 @@ async function connectToDatabase(uri) {
   return { client, db }
 }
 
-exports.handler = async (event, context) => {
+exports.handler = async event => {
   const { name, email, subject, message } = JSON.parse(event.body)
 
   if (!name || !email || !subject || !message) {
@@ -32,10 +36,16 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { db } = await connectToDatabase(process.env.MONGODB_URI)
+    const { db } = await connectToDatabase(process.env.GATSBY_MONGODB_URI)
     const collection = db.collection("inquiries")
 
-    await collection.insertOne({ name, email, message })
+    await collection.insertOne({
+      name,
+      email,
+      subject,
+      message,
+      created_at: new Date(),
+    })
 
     return {
       statusCode: 200,
