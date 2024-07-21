@@ -1,32 +1,48 @@
 const { MongoClient } = require("mongodb")
 
+let cachedClient = null
+let cachedDb = null
+
+async function connectToDatabase(uri) {
+  if (cachedClient && cachedDb) {
+    return { client: cachedClient, db: cachedDb }
+  }
+
+  const client = new MongoClient(uri)
+  await client.connect()
+
+  const db = client.db("portfolio")
+
+  cachedClient = client
+  cachedDb = db
+
+  return { client, db }
+}
+
 exports.handler = async (event, context) => {
   const { name, email, subject, message } = JSON.parse(event.body)
 
   if (!name || !email || !subject || !message) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: "Name, email, and message are required" }),
+      body: JSON.stringify({
+        error: "Name, email, subject, and message are required",
+      }),
     }
   }
 
   try {
-    const client = await MongoClient.connect(process.env.GATSBY_MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    const db = client.db("portfolio")
+    const { db } = await connectToDatabase(process.env.MONGODB_URI)
     const collection = db.collection("inquiries")
 
-    await collection.insertOne({ name, email, subject, message })
-
-    await client.close()
+    await collection.insertOne({ name, email, message })
 
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "Form submitted successfully" }),
     }
   } catch (error) {
+    console.error(error)
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Internal server error" }),

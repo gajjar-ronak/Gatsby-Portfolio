@@ -1,11 +1,27 @@
 import React from "react"
-import { Row, Col, Typography, Image, Button } from "antd"
+import { Row, Col, Typography, Button } from "antd"
 import { DownloadOutlined } from "@ant-design/icons"
-import profilePic from "../images/profile.png"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { graphql, useStaticQuery } from "gatsby"
 
 const { Title } = Typography
 
 const HeroSection = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "profile.png" }) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 450
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+        }
+      }
+    }
+  `)
+  const profilePic = getImage(data.file.childImageSharp.gatsbyImageData)
+
   const handleDownload = () => {
     window.open(
       "https://drive.google.com/file/d/1J5CsYNO8Sxe2JyWnKLM1MvrUVbRlXmVo/view?usp=sharing",
@@ -62,12 +78,7 @@ const HeroSection = () => {
               alignItems: "center",
             }}
           >
-            <Image
-              width={"50%"}
-              height={"50%"}
-              src={profilePic}
-              preview={false}
-            />
+            <GatsbyImage image={profilePic} alt="profile picture" />
           </div>
         </Col>
       </Row>
