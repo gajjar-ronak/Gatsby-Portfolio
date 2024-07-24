@@ -1,4 +1,5 @@
 import * as React from "react"
+import "../style/global.css"
 import { Row, Col } from "antd"
 
 import Header from "./Header"
