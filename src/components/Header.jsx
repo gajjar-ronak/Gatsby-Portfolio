@@ -26,7 +26,7 @@ const Header = () => {
           </div>
           <div className="social-links">
             <Link
-              to="https://github.com/vivek-gill"
+              to="https://github.com/gajjar-ronak"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
@@ -34,7 +34,7 @@ const Header = () => {
               <GithubOutlined className="icon github-icon" />
             </Link>
             <Link
-              to="https://www.linkedin.com/in/vivek-gill-5b9a94118/"
+              to="https://www.linkedin.com/in/ronak-gajjar/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
