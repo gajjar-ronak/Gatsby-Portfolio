@@ -24,25 +24,21 @@ const WorkSection = () => {
   ]
 
   return (
-    <div style={{ backgroundColor: "#fff" }} id="projects">
+    <div className="work-section" id="projects">
       <Row>
         {projects.map((project, index) => (
           <Col
             key={index}
             xs={24}
             lg={24}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              flexDirection: index % 2 === 0 ? "row" : "row-reverse",
-            }}
+            className={`project-col ${index % 2 === 0 ? "row-normal" : "row-reverse"}`}
           >
             <Col xs={12} sm={12} lg={12}>
-              <div style={{ padding: "30px" }}>
+              <div className="project-image-wrapper">
                 <img
                   alt={project.title}
                   src={project.projectImage}
-                  style={{ maxWidth: "100%", height: "auto", width: "100%" }}
+                  className="project-image"
                 />
               </div>
             </Col>
@@ -50,20 +46,15 @@ const WorkSection = () => {
               xs={12}
               sm={12}
               lg={12}
-              style={{ textAlign: "left", padding: "30px" }}
+              className="project-description-wrapper"
             >
               <Title level={3}>{project.title}</Title>
-              <Text>{project.description}</Text>
+              <Text >{project.description}</Text>
               <br />
-
               <Button
                 type="primary"
                 size="large"
-                style={{
-                  marginTop: "20px",
-                  color: "#fff",
-                  backgroundColor: "#000",
-                }}
+                className="project-button"
                 onClick={() => {
                   window.open(project.link, "_blank")
                 }}

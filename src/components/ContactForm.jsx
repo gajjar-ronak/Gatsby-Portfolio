@@ -1,7 +1,6 @@
 import React from "react"
 import { Form, Input, Button, Row, Col, notification } from "antd"
 import GoogleMapComponent from "./GoogleMap"
-
 import { CheckCircleFilled } from "@ant-design/icons"
 
 const openNotification = () => {
@@ -18,10 +17,6 @@ const ContactForm = () => {
   const [form] = Form.useForm()
 
   const onFinish = async values => {
-    try {
-    } catch (error) {
-      console.error(error)
-    }
     try {
       const response = await fetch("/.netlify/functions/contact", {
         method: "POST",
@@ -45,10 +40,8 @@ const ContactForm = () => {
   return (
     <Row id="contact">
       <Col span={12}>
-        <div style={{ maxWidth: 600, margin: "0 auto", padding: "1em" }}>
-          <h2 level={1} style={{ marginBottom: "2em" }}>
-            Contact Form
-          </h2>
+        <div className="contact-form-wrapper">
+          <h2 className="contact-form-title">Contact Form</h2>
           <Form
             form={form}
             layout="vertical"
@@ -91,11 +84,11 @@ const ContactForm = () => {
               <Input.TextArea
                 rows={4}
                 placeholder="Your Message"
-                style={{ height: "100%" }}
+                className="textarea-message"
               />
             </Form.Item>
             <Form.Item>
-              <Button htmlType="submit" type="submit" className="submit-btn">
+              <Button htmlType="submit" type="primary" className="submit-btn">
                 Submit
               </Button>
             </Form.Item>

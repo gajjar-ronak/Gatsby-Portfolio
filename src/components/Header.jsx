@@ -1,51 +1,45 @@
 import React from "react"
 import { Link } from "gatsby"
 import { GithubOutlined, LinkedinFilled } from "@ant-design/icons"
-import { Col, Row } from "antd"
+import { Col, Row, Typography } from "antd"
+
+const { Text } = Typography
 
 const Header = () => {
   return (
-    <Row style={{ width: "100%" }}>
+    <Row className="header-row">
       <Col span={24}>
-        <header className="header">
-          <div style={{ letterSpacing: "1px" }}>
-            <Link to="/" style={{ marginRight: "1rem" }}>
-              Home
+        <header className="header" style={{ padding: "20px 40px" }}>
+          <div className="nav-links">
+            <Link to="/" className="nav-link">
+              <Text>Home</Text>
             </Link>
-            <Link to="#about" style={{ marginRight: "1rem" }}>
-              About
+            <Link to="#about" className="nav-link">
+              <Text>About</Text>
             </Link>
-            <Link to="#projects" style={{ marginRight: "1rem" }}>
-              Projects
+            <Link to="#projects" className="nav-link">
+              <Text>Projects</Text>
             </Link>
-            <Link to="#contact">Contact</Link>
+            <Link to="#contact" className="nav-link">
+              <Text>Contact</Text>
+            </Link>
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <div className="social-links">
             <Link
               to="https://github.com/vivek-gill"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ marginRight: "1rem" }}
+              className="social-link"
             >
-              <GithubOutlined
-                style={{ fontSize: "1.2rem", color: "#24292e" }}
-              />
+              <GithubOutlined className="icon github-icon" />
             </Link>
             <Link
               to="https://www.linkedin.com/in/vivek-gill-5b9a94118/"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ marginRight: "1rem" }}
+              className="social-link"
             >
-              <LinkedinFilled
-                style={{ fontSize: "1.2rem", color: "#0a66c2" }}
-              />
+              <LinkedinFilled className="icon linkedin-icon" />
             </Link>
           </div>
         </header>
