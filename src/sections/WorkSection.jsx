@@ -13,14 +13,7 @@ const WorkSection = () => {
         "This project demonstrates client-side caching using React and SWR (Stale-While-Revalidate). The example shows how to fetch data from an API, cache it on the client side, and revalidate it periodically to ensure the data remains fresh.",
       link: "https://github.com/gajjar-ronak/client-side-caching-react-swr",
       projectImage: p1,
-    },
-    {
-      title: "MGF Web Design",
-      description:
-        "Web design I made for MGF, an amazing architecture agency from London. Web design I made for MGF, an amazing architecture agency from London. Web design I made for MGF, an amazing architecture agency from London.",
-      link: "/projects/mgf-web-design",
-      projectImage: p2,
-    },
+    }
   ]
 
   return (
