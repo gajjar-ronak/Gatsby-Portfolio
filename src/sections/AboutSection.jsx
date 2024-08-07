@@ -12,7 +12,7 @@ const AboutSection = () => {
         childImageSharp {
           gatsbyImageData(
             width: 450
-            formats: [AUTO]
+            formats: [AVIF, WEBP]
             placeholder: BLURRED
             transformOptions: { fit: COVER }
           )

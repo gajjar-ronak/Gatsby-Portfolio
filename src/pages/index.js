@@ -16,7 +16,7 @@ const IndexPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 1000) // Show loader for 1 seconds
+    }, 800) // Show loader for half second.
 
     return () => clearTimeout(timer)
   }, [])

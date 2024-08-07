@@ -11,7 +11,7 @@ const HeroSection = () => {
         childImageSharp {
           gatsbyImageData(
             width: 1200
-            formats: [AUTO]
+            formats: [AVIF, WEBP]
             placeholder: BLURRED
             transformOptions: { fit: COVER }
           )
