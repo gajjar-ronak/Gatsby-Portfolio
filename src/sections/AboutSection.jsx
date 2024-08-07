@@ -26,7 +26,7 @@ const AboutSection = () => {
     <Row justify="space-between" className="about-section" id="about">
       <Col xs={24} md={12} className="about-col">
         <div className="hero-image-wrapper">
-          <GatsbyImage image={profilePic} alt="profile picture" />
+          <GatsbyImage image={profilePic} alt="profile picture" className="profile-pic" />
         </div>
       </Col>
       <Col xs={24} md={12} className="education-col">

@@ -1,6 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
-import { GithubOutlined, LinkedinFilled } from "@ant-design/icons"
+import {
+  GithubOutlined,
+  LinkedinFilled,
+  XOutlined,
+  DribbbleOutlined,
+} from "@ant-design/icons"
 import { Col, Row, Typography } from "antd"
 
 const { Text } = Typography
@@ -40,6 +45,22 @@ const Header = () => {
               className="social-link"
             >
               <LinkedinFilled className="icon linkedin-icon" />
+            </Link>
+            <Link
+              to="https://x.com/Ronak_gajjar_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <XOutlined className="footer-icon icon x-icon" />
+            </Link>
+            <Link
+              to="https://dribbble.com/Ronak_Gajjar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <DribbbleOutlined className="footer-icon website-icon" />
             </Link>
           </div>
         </header>

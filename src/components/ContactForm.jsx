@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Form, Input, Button, Row, Col, notification } from "antd"
 import GoogleMapComponent from "./GoogleMap"
 import { CheckCircleFilled } from "@ant-design/icons"
@@ -15,9 +15,11 @@ const openNotification = () => {
 
 const ContactForm = () => {
   const [form] = Form.useForm()
+  const [isLoading, setIsLoading] = useState(false)
 
   const onFinish = async values => {
     try {
+      setIsLoading(true)
       const response = await fetch("/.netlify/functions/contact", {
         method: "POST",
         headers: {
@@ -34,6 +36,8 @@ const ContactForm = () => {
       }
     } catch (error) {
       console.error(error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -88,7 +92,12 @@ const ContactForm = () => {
               />
             </Form.Item>
             <Form.Item>
-              <Button htmlType="submit" type="primary" className="submit-btn">
+              <Button
+                htmlType="submit"
+                type="primary"
+                className="submit-btn"
+                loading={isLoading}
+              >
                 Submit
               </Button>
             </Form.Item>

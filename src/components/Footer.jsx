@@ -1,6 +1,11 @@
 import React from "react"
 import { Layout, Row, Col, Divider } from "antd"
-import { GithubOutlined, LinkedinFilled } from "@ant-design/icons"
+import {
+  GithubOutlined,
+  LinkedinFilled,
+  XOutlined,
+  DribbbleOutlined,
+} from "@ant-design/icons"
 
 const { Footer: AntFooter } = Layout
 
@@ -23,7 +28,7 @@ const Footer = () => {
             <div className="footer-contact">
               <p>
                 <span className="footer-bold">Phone: </span>
-                <a href="tel:+4917687994310"> +49 (0) 176 8799 4310 </a>
+                <a href="tel:+4917687994310"> +49 176 879 94310 </a>
               </p>
               <p className="footer-email">
                 <span className="footer-bold">Email: </span>
@@ -53,9 +58,26 @@ const Footer = () => {
               >
                 <LinkedinFilled className="footer-icon linkedin-icon" />
               </a>
+              <a
+                href="https://x.com/Ronak_gajjar_"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="website"
+                className="footer-social-link"
+              >
+                <XOutlined className="footer-icon website-icon" />
+              </a>
+
+              <a
+                href="https://dribbble.com/Ronak_Gajjar"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="website"
+                className="footer-social-link"
+              >
+                <DribbbleOutlined className="footer-icon website-icon" />
+              </a>
             </div>
-
-
           </Col>
         </Row>
         <Row>
@@ -67,7 +89,6 @@ const Footer = () => {
           </Col>
         </Row>
       </AntFooter>
-
     </>
   )
 }
