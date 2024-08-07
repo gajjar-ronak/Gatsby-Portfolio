@@ -89,6 +89,10 @@ span {
   color: #0a66c2;
 }
 
+.dribbble-icon {
+  color: #ea4c89;
+}
+
 .header {
   display: flex;
   justify-content: space-between;

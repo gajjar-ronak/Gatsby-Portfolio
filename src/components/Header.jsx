@@ -52,7 +52,7 @@ const Header = () => {
               rel="noopener noreferrer"
               className="social-link"
             >
-              <XOutlined className="footer-icon icon x-icon" />
+              <XOutlined className="icon x-icon" />
             </Link>
             <Link
               to="https://dribbble.com/Ronak_Gajjar"
@@ -60,7 +60,7 @@ const Header = () => {
               rel="noopener noreferrer"
               className="social-link"
             >
-              <DribbbleOutlined className="footer-icon website-icon" />
+              <DribbbleOutlined className="icon dribbble-icon" />
             </Link>
           </div>
         </header>

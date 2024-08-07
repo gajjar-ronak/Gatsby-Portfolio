@@ -75,7 +75,7 @@ const Footer = () => {
                 aria-label="website"
                 className="footer-social-link"
               >
-                <DribbbleOutlined className="footer-icon website-icon" />
+                <DribbbleOutlined className="footer-icon dribbble-icon" />
               </a>
             </div>
           </Col>
