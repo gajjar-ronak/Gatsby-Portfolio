@@ -44,7 +44,7 @@ const HeroSection = () => {
         <Col xs={24} sm={24} md={24} className="hero-col-left">
           <h1 className="hero-title">Ronak Gajjar</h1>
           <p className="hero-subtitle">
-            A Full Stack Web Developer, Passionate About Data Science.
+            A Full Stack Web Developer, Passionate About Data Science. <br />
           </p>
           <Button
             type="primary"
