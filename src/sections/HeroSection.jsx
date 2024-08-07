@@ -1,8 +1,21 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import { Row, Col, Button } from "antd"
 import { DownloadOutlined } from "@ant-design/icons"
 
 const HeroSection = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "bg.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
   const handleDownload = () => {
     window.open(
       "https://drive.google.com/file/d/1J5CsYNO8Sxe2JyWnKLM1MvrUVbRlXmVo/view?usp=sharing",
@@ -14,7 +27,7 @@ const HeroSection = () => {
     <div
       className="hero-section"
       style={{
-        backgroundImage: `url(${require("../images/bg.png").default})`,
+        backgroundImage: `url(${data.file.childImageSharp.fluid.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -43,3 +56,4 @@ const HeroSection = () => {
 }
 
 export default HeroSection
+
